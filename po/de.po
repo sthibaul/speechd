@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: speech-dispatcher 0.8.6\n"
 "Report-Msgid-Bugs-To: speechd-discuss@nongnu.org\n"
 "POT-Creation-Date: 2024-04-29 01:03+0200\n"
-"PO-Revision-Date: 2021-03-16 21:58+0000\n"
-"Last-Translator: Samuel Thibault <samuel.thibault@ens-lyon.org>\n"
+"PO-Revision-Date: 2024-10-13 14:16+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/speech-dispatcher/"
 "po/de/>\n"
 "Language: de\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: src/server/options.c:63
 #, c-format
@@ -115,7 +115,7 @@ msgstr "falls er mit keinen Clients verbunden ist\n"
 #: src/server/options.c:97
 #, c-format
 msgid "0 disables such shutdown\n"
-msgstr ""
+msgstr "0 deaktiviert dieses Herunterfahren\n"
 
 #: src/server/options.c:99
 #, c-format
