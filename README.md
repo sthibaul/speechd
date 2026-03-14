@@ -15,6 +15,30 @@ Speech Dispatcher project provides a high-level *device independent* layer
 for access to speech synthesis through a simple, stable and well documented
 interface.
 
+Support
+-------
+
+These speech syntheses are supported:
+
+- Baratinoo
+- Cicero
+- DECTalk
+- Epos
+- ESpeak/ESpeak-NG
+- Festival
+- Flite
+- IBMTTS / voxin
+- Ivona
+- Kali
+- Llia
+- Mary
+- MBrola
+- Mimic3
+- OpenJTalk
+- Pico
+- Piper
+- Swift
+
 Documentation
 -------------
 
