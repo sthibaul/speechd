@@ -21,6 +21,11 @@
 /Makefile.in
 /TAGS
 /dummy-message.wav
+/libKAnalyse.so
+/libKGlobal.so
+/libKParle.so
+/libKTrans.so
+/libKali.so
 /libbaratinoo.so
 /libspeechd_module.la
 /libvoxin.so
