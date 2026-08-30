@@ -151,7 +151,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v4
       with:
-        name: config-${{ matrix.sanitizer }}.log
+        name: config-noltdl.log
         path: config.log
     - name: make
       run: ${{ matrix.build_env }} make
