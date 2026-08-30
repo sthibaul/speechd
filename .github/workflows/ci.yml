@@ -68,6 +68,7 @@ jobs:
     - uses: firebuild/apt-eatmydata-action@v1
     - name: dependencies
       run: sudo apt-get update ; sudo apt-get install autopoint
+                        cmake
                         python3 python3-xdg
                         flite1-dev flite
                         libespeak-dev libespeak-ng-dev
@@ -75,24 +76,24 @@ jobs:
                         libao-dev libasound2-dev libaudio-dev libpulse-dev libpipewire-0.3-dev libxau-dev libsndfile1-dev
                         libdotconf-dev libglib2.0-dev libltdl-dev systemd
                         gettext help2man texinfo texlive texlive-plain-generic
-                        librubberband-dev
+                        nlohmann-json3-dev librubberband-dev
                         pulseaudio ${{ matrix.deps }}
     - name: install piper
       run: |
-        wget https://github.com/rhasspy/piper-phonemize/releases/download/2023.11.14-4/piper-phonemize_linux_x86_64.tar.gz
-        echo "22ae85dba1c07e328b33e8311ae6e67ad1ea2a57068d08238c452c69b0b1761eb39b064bf7e51f7413317a8200f6f92c23426a5a575abbb4dbdde86c81825601  piper-phonemize_linux_x86_64.tar.gz" | sha512sum --check
-        tar -C /opt -xvf piper-phonemize_linux_x86_64.tar.gz
-        wget https://github.com/rhasspy/piper/archive/refs/tags/2023.11.14-2.tar.gz
-        echo "2156c8d384aafc977a41eea181855b5e3fddab1eca353528d919d421958e4c10dbcf6526d03433e4246ac847a2fe4a7c43a57d2cb5666993ad0f28ed9fb68fe6  2023.11.14-2.tar.gz" | sha512sum --check
-        tar -C /opt -xvf 2023.11.14-2.tar.gz
+        wget https://github.com/OHF-Voice/piper1-gpl/archive/refs/tags/v1.7.0.tar.gz
+        echo "bef0ddf13b9900bb1f719525b340edab2b60b70127b52dd5f635ae18be3c913e46961ad59409bc66d177ccee5357257899b8452f63bd7475aac6d9fa2014934a  v1.7.0.tar.gz" | sha512sum --check
+        tar xf v1.7.0.tar.gz
+        cd piper1-gpl-1.7.0/libpiper
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/piper1
+        cmake --build build -j$(nproc)
+        cmake --install build
     - name: autoconf
       run: ./build.sh
     - name: configure
       run: ${{ matrix.configenv }}
            CFLAGS="${{ matrix.configflags }}"
-           CXXFLAGS="${{ matrix.configflags }} -I/opt/piper_phonemize/include"
-           LDFLAGS="-L/opt/piper_phonemize/lib"
-           ./configure --prefix=/tmp/foobar --with-piper=/opt/piper-2023.11.14-2 ${{ matrix.config }}
+           CXXFLAGS="${{ matrix.configflags }}"
+           ./configure --prefix=/tmp/foobar --with-piper=/tmp/piper1 ${{ matrix.config }}
     - name: Store the config
       if: ${{ always() }}
       uses: actions/upload-artifact@v4
